@@ -46,7 +46,6 @@ public class ProductService {
                 .map(mapper::toProductDTO)
                 .collect( Collectors.toList ( ));
 
-
         return result;
     }
 
