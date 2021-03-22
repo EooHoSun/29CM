@@ -36,9 +36,14 @@ public class ProductService {
                 .findAll ( )
                 .stream( )
                 .sorted (comp1.thenComparing(comp2))
-                .map(mapper::toProductDTO)
+                .map(entity -> {
+                    ProductDTO dto = mapper.toProductDTO ( entity );
+                    if(dto.getProductQuantity () < 1){
+                        dto.setSaleable ( false );
+                    }
+                    return dto;
+                })
                 .collect( Collectors.toList ( ));
-
 
         return result;
     }
@@ -53,6 +58,8 @@ public class ProductService {
 
         return result;
     }
+
+    //
     public Integer getPriceByProductId(String productId){
         Integer result = -1;
 

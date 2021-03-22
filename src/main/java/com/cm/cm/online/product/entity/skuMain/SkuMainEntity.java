@@ -8,6 +8,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.UUID;
 
+/**
+ * 메인 단품 table(entity)
+ */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder

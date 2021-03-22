@@ -6,6 +6,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * 서브 단품 table(entity)
+ */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder

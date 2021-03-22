@@ -15,5 +15,6 @@ public class ProductDTO {
     private String skuMainId;
     private SkuMainDTO skuMain;
     private Set<SkuSubDTO> skuSubList;
+    private boolean saleable = true;
 
 }
