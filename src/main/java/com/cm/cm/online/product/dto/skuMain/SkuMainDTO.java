@@ -5,10 +5,10 @@ import lombok.Data;
 
 @Data
 public class SkuMainDTO {
-    private String skuId;
-    private int skuSalePrice;
-    private int skuPurchasePrice;
-    private String skuName;
+    private String id;
+    private int saleprice;
+    private int purchaseprice;
+    private String name;
     private String originCd;
     private OriginDTO origin;
 }

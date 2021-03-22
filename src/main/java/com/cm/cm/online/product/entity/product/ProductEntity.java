@@ -20,15 +20,15 @@ import java.util.Set;
 @Builder
 @Getter
 @Entity
-@Table(name = "TB_PRODUCT")
-@EqualsAndHashCode(of = "productId")
+@Table(name = "PRODUCTS")
+@EqualsAndHashCode(of = "id")
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long productId;
-    private String productContents;
-    private String productName;
-    private int productQuantity;
+    private long id;
+    private String contents;
+    private String name;
+    private int quantity;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "product")
     private ProductSkuMainEntity skuMain;
@@ -48,14 +48,14 @@ public class ProductEntity {
 
     public static ProductEntity newInstance(ProductDTO dto){
         return ProductEntity.builder ()
-                .productContents ( dto.getProductContents () )
-                .productName ( dto.getProductName () )
-                .productQuantity ( 100 )
+                .contents ( dto.getContents () )
+                .name ( dto.getName () )
+                .quantity ( 100 )
                 .build ();
     }
 
     public boolean saleable(){
-        return this.getProductQuantity () > 0;
+        return this.getQuantity () > 0;
     }
 
 

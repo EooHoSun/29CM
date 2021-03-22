@@ -8,10 +8,10 @@ import java.util.Set;
 
 @Data
 public class ProductDTO {
-    private String productId;
-    private String productContents;
-    private String productName;
-    private int productQuantity;
+    private String id;
+    private String contents;
+    private String name;
+    private int quantity;
     private ProductSkuMainDTO skuMain;
     private Set<ProductSkuSubDTO> skuSubList;
     private boolean saleable = true;

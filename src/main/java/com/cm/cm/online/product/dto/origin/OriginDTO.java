@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class OriginDTO {
-    private String originCd;
-    private String originName;
+    private String cd;
+    private String name;
 }

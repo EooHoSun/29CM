@@ -28,7 +28,7 @@ public class ProductService {
             return orderByPrice == 1 ? compNum : -compNum;
         };
         Comparator<ProductEntity> comp2 = (e1, e2) -> {
-            int compNum = e1.getProductQuantity () - e2.getProductQuantity ();
+            int compNum = e1.getQuantity () - e2.getQuantity ();
             return orderByQuantity == 1 ? compNum : -compNum;
         };
 
@@ -39,7 +39,7 @@ public class ProductService {
                 .map(entity -> {
                     ProductDTO dto = mapper.toProductDTO ( entity );
 
-                    if(dto.getProductQuantity () < 1){
+                    if(dto.getQuantity () < 1){
                         dto.setSaleable ( false );
                     }
 

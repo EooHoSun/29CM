@@ -11,25 +11,25 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Entity
-@Table(name = "TB_PRODUCT_SKU_SUB")
+@Table(name = "PRODUCTS_SKUSUB")
 @EqualsAndHashCode(of = "productSkuSubVO")
 public class ProductSkuSubEntity {
     @EmbeddedId
     ProductSkuSubVO productSkuSubVO;
-    private int productSkuQuantity;
+    private int quantity;
 
 
     @ManyToOne
-    @JoinColumn(name = "productId", referencedColumnName = "productId", updatable = false,insertable = false)
+    @JoinColumn(name = "productId", referencedColumnName = "id", updatable = false,insertable = false)
     private ProductEntity product;
 
 
     @OneToOne
-    @JoinColumn(name="skuId", referencedColumnName = "skuId", updatable = false, insertable = false)
+    @JoinColumn(name="skusubId", referencedColumnName = "id", updatable = false, insertable = false)
     private SkuSubEntity skuSub;
 
 
     public int getPrice(){
-        return this.getSkuSub ().getSkuSalePrice () * this.getProductSkuQuantity ();
+        return this.getSkuSub ().getSaleprice () * this.getQuantity ();
     }
 }
