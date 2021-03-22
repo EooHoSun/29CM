@@ -1,4 +1,4 @@
-package com.cm.cm.online.product.entity.skuMain;
+package com.cm.cm.online.product.entity.productSkuMain;
 
 import lombok.*;
 

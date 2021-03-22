@@ -1,9 +1,7 @@
 package com.cm.cm.online.product.dto.product;
 
-import com.cm.cm.online.product.dto.sku.ProductSkuMainDTO;
-import com.cm.cm.online.product.dto.sku.ProductSkuSubDTO;
-import com.cm.cm.online.product.dto.sku.SkuMainDTO;
-import com.cm.cm.online.product.dto.sku.SkuSubDTO;
+import com.cm.cm.online.product.dto.productSkuMain.ProductSkuMainDTO;
+import com.cm.cm.online.product.dto.productSkuSub.ProductSkuSubDTO;
 import lombok.Data;
 
 import java.util.Set;

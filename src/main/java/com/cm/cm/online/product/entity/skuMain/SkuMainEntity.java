@@ -1,12 +1,10 @@
 package com.cm.cm.online.product.entity.skuMain;
 
-import com.cm.cm.online.product.dto.sku.SkuMainDTO;
+import com.cm.cm.online.product.dto.skuMain.SkuMainDTO;
 import com.cm.cm.online.product.entity.origin.OriginEntity;
-import com.cm.cm.online.product.entity.product.ProductEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 /**
  * 메인 단품 table(entity)

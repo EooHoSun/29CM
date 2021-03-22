@@ -1,4 +1,4 @@
-package com.cm.cm.online.product.dto.sku;
+package com.cm.cm.online.product.dto.skuMain;
 
 import com.cm.cm.online.product.dto.origin.OriginDTO;
 import lombok.Data;

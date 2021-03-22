@@ -1,7 +1,7 @@
-package com.cm.cm.online.product.entity.skuSub;
+package com.cm.cm.online.product.entity.productSkuSub;
 
 import com.cm.cm.online.product.entity.product.ProductEntity;
-import com.cm.cm.online.product.entity.skuMain.SkuMainEntity;
+import com.cm.cm.online.product.entity.skuSub.SkuSubEntity;
 import lombok.*;
 
 import javax.persistence.*;

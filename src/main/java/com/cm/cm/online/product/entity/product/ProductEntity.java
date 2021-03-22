@@ -1,10 +1,8 @@
 package com.cm.cm.online.product.entity.product;
 
 import com.cm.cm.online.product.dto.product.ProductDTO;
-import com.cm.cm.online.product.entity.skuMain.ProductSkuMainEntity;
-import com.cm.cm.online.product.entity.skuMain.SkuMainEntity;
-import com.cm.cm.online.product.entity.skuSub.ProductSkuSubEntity;
-import com.cm.cm.online.product.entity.skuSub.SkuSubEntity;
+import com.cm.cm.online.product.entity.productSkuMain.ProductSkuMainEntity;
+import com.cm.cm.online.product.entity.productSkuSub.ProductSkuSubEntity;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
@@ -13,7 +11,6 @@ import org.hibernate.annotations.FetchMode;
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * 상품 table(entity)
