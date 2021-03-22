@@ -1,7 +1,9 @@
 package com.cm.cm.online.product.entity.product;
 
 import com.cm.cm.online.product.dto.product.ProductDTO;
+import com.cm.cm.online.product.entity.skuMain.ProductSkuMainEntity;
 import com.cm.cm.online.product.entity.skuMain.SkuMainEntity;
+import com.cm.cm.online.product.entity.skuSub.ProductSkuSubEntity;
 import com.cm.cm.online.product.entity.skuSub.SkuSubEntity;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
@@ -21,33 +23,34 @@ import java.util.UUID;
 @Builder
 @Getter
 @Entity
-@Table(name = "TB_PRODUCT_M")
+@Table(name = "TB_PRODUCT")
 @EqualsAndHashCode(of = "productId")
 public class ProductEntity {
     @Id
-    private String productId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long productId;
     private String productContents;
     private String productName;
     private int productQuantity;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "product")
-    private SkuMainEntity skuMain;
+    private ProductSkuMainEntity skuMain;
+
 
 
     // N + 1 문제 및 속도 성능 저하 해결을 위한 지연로딩, subselect, batch size 설정
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
     @BatchSize ( size = 100)
     @Fetch ( FetchMode.SUBSELECT )
-    private Set<SkuSubEntity> skuSubList = new LinkedHashSet<>();
+    private Set<ProductSkuSubEntity> skuSubList = new LinkedHashSet<>();
 
 
     public int getPrice(){
-        return this.skuMain.getSkuSalePrice () + this.getSkuSubList ().stream ().mapToInt ( SkuSubEntity::getSkuSalePrice ).sum ();
+        return this.skuMain.getPrice () + this.getSkuSubList ().stream ().mapToInt ( ProductSkuSubEntity::getPrice ).sum ();
     }
 
     public static ProductEntity newInstance(ProductDTO dto){
         return ProductEntity.builder ()
-                .productId ( UUID.randomUUID ( ).toString () )
                 .productContents ( dto.getProductContents () )
                 .productName ( dto.getProductName () )
                 .productQuantity ( 100 )

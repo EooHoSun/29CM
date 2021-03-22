@@ -1,21 +1,32 @@
-INSERT INTO TB_ORIGIN_M(ORIGIN_CD, ORIGIN_NAME) VALUES
+INSERT INTO TB_ORIGIN(ORIGIN_CD, ORIGIN_NAME) VALUES
 ('001', 'KOREA'),
 ('002', 'AMERICA');
 
-INSERT INTO TB_PRODUCT_M(PRODUCT_ID, PRODUCT_CONTENTS, PRODUCT_NAME, PRODUCT_QUANTITY) VALUES
-('product1', 'salmon sushi', 'salmon sushi', 100),
-('product2', 'crap rice', 'crap rice', 100),
-('product3', 'cow steak', 'cow steak', 0);
+INSERT INTO TB_PRODUCT(PRODUCT_ID, PRODUCT_CONTENTS, PRODUCT_NAME, PRODUCT_QUANTITY) VALUES
+(1, 'salmon sushi', 'salmon sushi', 100),
+(2, 'crap rice', 'crap rice', 100),
+(3, 'cow steak', 'cow steak', 0);
 
 
-INSERT INTO TB_SKU_MAIN(SKU_ID, SKU_SALE_PRICE, SKU_PURCHASE_PRICE, SKU_NAME, ORIGIN_CD, PRODUCT_ID) VALUES
-('skumain1', 100, 50, 'salmon', '001', 'product1'),
-('skumain2', 200, 100, 'crap', '001', 'product2'),
-('skumain3', 300, 70, 'steak', '002', 'product3');
+INSERT INTO TB_SKU_MAIN(SKU_ID, SKU_SALE_PRICE, SKU_PURCHASE_PRICE, SKU_NAME, ORIGIN_CD) VALUES
+(1, 100, 50, 'salmon', '001'),
+(2, 200, 100, 'crap', '001'),
+(3, 300, 70, 'steak', '002');
 
 
-INSERT INTO TB_SKU_SUB(SKU_ID, SKU_SALE_PRICE, SKU_PURCHASE_PRICE, SKU_NAME, PRODUCT_ID, ORIGIN_CD) VALUES
-('skusub1', 10, 10, 'kim', 'product1', '001'),
-('skusub2', 10, 10, 'source', 'product1', '001'),
-('skusub3', 10, 10, 'rice', 'product2', '001'),
-('skusub4', 10, 10, 'kim', 'product2', '001');
+INSERT INTO TB_SKU_SUB(SKU_ID, SKU_SALE_PRICE, SKU_PURCHASE_PRICE, SKU_NAME, ORIGIN_CD) VALUES
+(1, 10, 10, 'kim', '001'),
+(2, 10, 10, 'source', '001'),
+(3, 10, 10, 'rice', '001');
+
+
+INSERT INTO TB_PRODUCT_SKU_MAIN(PRODUCT_ID, SKU_ID, PRODUCT_SKU_QUANTITY) VALUES
+(1,1,2),
+(2,2,3),
+(3,3,1);
+
+INSERT INTO TB_PRODUCT_SKU_SUB(PRODUCT_ID, SKU_ID, PRODUCT_SKU_QUANTITY) VALUES
+(1,1,5),
+(1,2,1),
+(2,1,4),
+(2,3,3);

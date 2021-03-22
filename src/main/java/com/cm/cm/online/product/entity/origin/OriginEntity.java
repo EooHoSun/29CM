@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Builder
 @Getter
 @Entity
-@Table(name = "TB_ORIGIN_M")
+@Table(name = "TB_ORIGIN")
 @EqualsAndHashCode(of = "originCd")
 public class OriginEntity {
     @Id

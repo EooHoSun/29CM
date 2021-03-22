@@ -20,16 +20,12 @@ import java.util.UUID;
 @EqualsAndHashCode(of = "skuId")
 public class SkuMainEntity {
     @Id
-    private String skuId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long skuId;
     private int skuSalePrice;
     private int skuPurchasePrice;
     private String skuName;
-    private String productId;
     private String originCd;
-
-    @ManyToOne
-    @JoinColumn(name = "productId", referencedColumnName = "productId", insertable = false, updatable = false)
-    private ProductEntity product;
 
 
     @ManyToOne
@@ -38,7 +34,6 @@ public class SkuMainEntity {
 
     public static SkuMainEntity newInstance(SkuMainDTO dto){
         return SkuMainEntity.builder ()
-                .skuId ( UUID.randomUUID ().toString () )
                 .skuName ( dto.getSkuName ( ) )
                 .skuSalePrice ( dto.getSkuSalePrice () )
                 .skuPurchasePrice ( dto.getSkuPurchasePrice () )

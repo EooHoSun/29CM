@@ -1,4 +1,4 @@
-package com.cm.cm.online.product.entity.skuSub;
+package com.cm.cm.online.product.entity.skuMain;
 
 import lombok.*;
 
@@ -11,8 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Builder
-public class SkuSubVO implements Serializable {
-
-    private String skuId;
-    private String productId;
+public class ProductSkuMainVO implements Serializable {
+    private long productId;
+    private long skuId;
 }

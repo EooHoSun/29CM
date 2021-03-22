@@ -15,18 +15,16 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name = "TB_SKU_SUB")
-@EqualsAndHashCode(of = "skuSubVO")
+@EqualsAndHashCode(of = "skuId")
 public class SkuSubEntity {
-    @EmbeddedId
-    private SkuSubVO skuSubVO;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long skuId;
     private int skuSalePrice;
     private int skuPurchasePrice;
     private String skuName;
     private String originCd;
 
-    @ManyToOne
-    @JoinColumn(name = "productId", referencedColumnName = "productId", updatable = false,insertable = false)
-    private ProductEntity product;
 
     @ManyToOne
     @JoinColumn(name = "originCd", referencedColumnName = "originCd", insertable = false, updatable = false)
