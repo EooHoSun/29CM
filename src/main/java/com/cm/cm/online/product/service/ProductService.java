@@ -38,9 +38,12 @@ public class ProductService {
                 .sorted (comp1.thenComparing(comp2))
                 .map(entity -> {
                     ProductDTO dto = mapper.toProductDTO ( entity );
+
                     if(dto.getProductQuantity () < 1){
                         dto.setSaleable ( false );
                     }
+
+                    dto.setTotalPrice ( entity.getPrice () );
                     return dto;
                 })
                 .collect( Collectors.toList ( ));
@@ -62,12 +65,13 @@ public class ProductService {
     //
     public Integer getPriceByProductId(String productId){
         Integer result = -1;
+        ProductEntity entity = repository
+                .findById ( productId )
+                .get ();
 
-        result = Integer.valueOf (
-                repository
-                        .findById ( productId )
-                        .get ()
-                        .getPrice () );
+        if(entity.saleable ()){
+            result = Integer.valueOf (entity.getPrice ());
+        }
 
         return result;
     }

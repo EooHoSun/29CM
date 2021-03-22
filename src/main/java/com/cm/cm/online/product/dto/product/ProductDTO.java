@@ -17,5 +17,6 @@ public class ProductDTO {
     private ProductSkuMainDTO skuMain;
     private Set<ProductSkuSubDTO> skuSubList;
     private boolean saleable = true;
+    private int totalPrice = -1;
 
 }
