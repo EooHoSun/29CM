@@ -28,6 +28,11 @@ public class SkuMainEntity {
     private String originCd;
 
     @ManyToOne
+    @JoinColumn(name = "productId", referencedColumnName = "productId", insertable = false, updatable = false)
+    private ProductEntity product;
+
+
+    @ManyToOne
     @JoinColumn(name = "originCd", referencedColumnName = "originCd", insertable = false, updatable = false)
     private OriginEntity origin;
 

@@ -29,10 +29,8 @@ public class ProductEntity {
     private String productContents;
     private String productName;
     private int productQuantity;
-    private String skuMainId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "skuMainId", referencedColumnName = "skuId", insertable = false, updatable = false)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "product")
     private SkuMainEntity skuMain;
 
 
