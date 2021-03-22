@@ -6,6 +6,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * 서브 단품 table(entity)
+ */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
@@ -22,7 +25,7 @@ public class SkuSubEntity {
     private String productId;
     private String originCd;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "originCd", referencedColumnName = "originCd", insertable = false, updatable = false)
     private OriginEntity origin;
 
