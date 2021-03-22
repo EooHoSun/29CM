@@ -15,6 +15,7 @@ public class Application {
 
 
 	public static void makeTestData(){
+		System.out.println("dd");
 	}
 
 
