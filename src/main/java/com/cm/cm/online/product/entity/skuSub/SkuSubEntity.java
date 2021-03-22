@@ -1,4 +1,4 @@
-package com.cm.cm.online.product.entity.sku;
+package com.cm.cm.online.product.entity.skuSub;
 
 import com.cm.cm.online.product.entity.origin.OriginEntity;
 import com.cm.cm.online.product.entity.product.ProductEntity;
@@ -12,22 +12,22 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name = "TB_SKU_SUB")
-@EqualsAndHashCode(of = "skuId")
+@EqualsAndHashCode(of = "skuSubVO")
 public class SkuSubEntity {
-    @Id
-    private String skuId;
+    @EmbeddedId
+    private SkuSubVO skuSubVO;
     private int skuSalePrice;
     private int skuPurchasePrice;
     private String skuName;
-    private String productId;
     private String originCd;
+
+    @ManyToOne
+    @JoinColumn(name = "productId", referencedColumnName = "productId", updatable = false,insertable = false)
+    private ProductEntity product;
 
     @ManyToOne
     @JoinColumn(name = "originCd", referencedColumnName = "originCd", insertable = false, updatable = false)
     private OriginEntity origin;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productId", referencedColumnName = "productId", insertable = false, updatable = false)
-    private ProductEntity product;
 
 }

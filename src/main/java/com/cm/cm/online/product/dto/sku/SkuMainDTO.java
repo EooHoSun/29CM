@@ -9,5 +9,7 @@ public class SkuMainDTO {
     private int skuSalePrice;
     private int skuPurchasePrice;
     private String skuName;
+    private String productId;
+    private String originCd;
     private OriginDTO origin;
 }

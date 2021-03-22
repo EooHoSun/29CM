@@ -1,22 +1,15 @@
 package com.cm.cm.online.product.service;
 
 import com.cm.cm.online.product.dto.product.ProductDTO;
-import com.cm.cm.online.product.dto.sku.SkuMainDTO;
-import com.cm.cm.online.product.entity.origin.OriginEntity;
 import com.cm.cm.online.product.entity.product.ProductEntity;
-import com.cm.cm.online.product.entity.sku.SkuMainEntity;
 import com.cm.cm.online.product.repository.ProductMapper;
 import com.cm.cm.online.product.repository.ProductRepository;
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service

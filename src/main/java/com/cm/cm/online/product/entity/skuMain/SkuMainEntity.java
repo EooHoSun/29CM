@@ -1,4 +1,4 @@
-package com.cm.cm.online.product.entity.sku;
+package com.cm.cm.online.product.entity.skuMain;
 
 import com.cm.cm.online.product.dto.sku.SkuMainDTO;
 import com.cm.cm.online.product.entity.origin.OriginEntity;
@@ -21,8 +21,8 @@ public class SkuMainEntity {
     private int skuSalePrice;
     private int skuPurchasePrice;
     private String skuName;
+    private String productId;
     private String originCd;
-
 
     @ManyToOne
     @JoinColumn(name = "originCd", referencedColumnName = "originCd", insertable = false, updatable = false)

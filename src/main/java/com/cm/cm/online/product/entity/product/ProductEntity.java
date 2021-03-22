@@ -1,8 +1,8 @@
 package com.cm.cm.online.product.entity.product;
 
 import com.cm.cm.online.product.dto.product.ProductDTO;
-import com.cm.cm.online.product.entity.sku.SkuMainEntity;
-import com.cm.cm.online.product.entity.sku.SkuSubEntity;
+import com.cm.cm.online.product.entity.skuMain.SkuMainEntity;
+import com.cm.cm.online.product.entity.skuSub.SkuSubEntity;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
@@ -29,11 +29,11 @@ public class ProductEntity {
     private String skuMainId;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "skuMainId", referencedColumnName = "skuId", updatable = false, insertable = false)
+    @JoinColumn(name = "skuMainId", referencedColumnName = "skuId", insertable = false, updatable = false)
     private SkuMainEntity skuMain;
 
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     @BatchSize ( size = 100)
     @Fetch ( FetchMode.SUBSELECT )
     private Set<SkuSubEntity> skuSubList = new LinkedHashSet<>();
