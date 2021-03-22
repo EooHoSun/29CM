@@ -13,6 +13,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * 상품 table(entity)
+ */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
@@ -33,6 +36,7 @@ public class ProductEntity {
     private SkuMainEntity skuMain;
 
 
+    // N + 1 문제 및 속도 성능 저하 해결을 위한 지연로딩, subselect, batch size 설정
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
     @BatchSize ( size = 100)
     @Fetch ( FetchMode.SUBSELECT )

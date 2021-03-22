@@ -8,6 +8,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.UUID;
 
+/**
+ * 메인 단품 table(entity)
+ */
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
@@ -24,7 +27,7 @@ public class SkuMainEntity {
     private String originCd;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "originCd", referencedColumnName = "originCd", insertable = false, updatable = false)
     private OriginEntity origin;
 
