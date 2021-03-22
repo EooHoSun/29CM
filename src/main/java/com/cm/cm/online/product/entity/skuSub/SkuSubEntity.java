@@ -14,20 +14,20 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Entity
-@Table(name = "TB_SKU_SUB")
-@EqualsAndHashCode(of = "skuId")
+@Table(name = "SKUSUB")
+@EqualsAndHashCode(of = "id")
 public class SkuSubEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long skuId;
-    private int skuSalePrice;
-    private int skuPurchasePrice;
-    private String skuName;
+    private long id;
+    private int saleprice;
+    private int purchaseprice;
+    private String name;
     private String originCd;
 
 
     @ManyToOne
-    @JoinColumn(name = "originCd", referencedColumnName = "originCd", insertable = false, updatable = false)
+    @JoinColumn(name = "originCd", referencedColumnName = "cd", insertable = false, updatable = false)
     private OriginEntity origin;
 
 

@@ -14,10 +14,10 @@ import javax.persistence.Table;
 @Builder
 @Getter
 @Entity
-@Table(name = "TB_ORIGIN")
-@EqualsAndHashCode(of = "originCd")
+@Table(name = "ORIGIN")
+@EqualsAndHashCode(of = "cd")
 public class OriginEntity {
     @Id
-    private String originCd;
-    private String originName;
+    private String cd;
+    private String name;
 }

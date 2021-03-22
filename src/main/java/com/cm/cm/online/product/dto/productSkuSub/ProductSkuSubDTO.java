@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class ProductSkuSubDTO {
     ProductSkuSubVO productSkuSubVO;
-    private int productSkuQuantity;
+    private int quantity;
     private SkuSubDTO skuSub;
 }

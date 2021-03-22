@@ -13,5 +13,5 @@ import java.io.Serializable;
 @Builder
 public class ProductSkuMainVO implements Serializable {
     private long productId;
-    private long skuId;
+    private long skumainId;
 }

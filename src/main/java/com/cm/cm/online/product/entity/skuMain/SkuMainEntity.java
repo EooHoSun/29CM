@@ -14,27 +14,27 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Entity
-@Table(name = "TB_SKU_MAIN")
-@EqualsAndHashCode(of = "skuId")
+@Table(name = "SKUMAIN")
+@EqualsAndHashCode(of = "id")
 public class SkuMainEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long skuId;
-    private int skuSalePrice;
-    private int skuPurchasePrice;
-    private String skuName;
+    private long id;
+    private int saleprice;
+    private int purchaseprice;
+    private String name;
     private String originCd;
 
 
     @ManyToOne
-    @JoinColumn(name = "originCd", referencedColumnName = "originCd", insertable = false, updatable = false)
+    @JoinColumn(name = "originCd", referencedColumnName = "cd", insertable = false, updatable = false)
     private OriginEntity origin;
 
     public static SkuMainEntity newInstance(SkuMainDTO dto){
         return SkuMainEntity.builder ()
-                .skuName ( dto.getSkuName ( ) )
-                .skuSalePrice ( dto.getSkuSalePrice () )
-                .skuPurchasePrice ( dto.getSkuPurchasePrice () )
+                .name ( dto.getName ( ) )
+                .saleprice ( dto.getSaleprice () )
+                .purchaseprice ( dto.getPurchaseprice () )
                 .build ();
     }
 
