@@ -36,7 +36,7 @@ public class ProductController {
     }
 
     @GetMapping("/v1/{productId}")
-    public ResponseEntity<ProductDTO> findByProductId(@PathVariable @NotNull String productId){
+    public ResponseEntity<ProductDTO> findByProductId(@PathVariable @NotNull long productId){
         ResponseEntity<ProductDTO> result = null;
 
         try {
@@ -50,7 +50,7 @@ public class ProductController {
 
 
     @GetMapping("/price/v1/{productId}")
-    public ResponseEntity<Integer> getPriceByProductId(@PathVariable @NotNull String productId){
+    public ResponseEntity<Integer> getPriceByProductId(@PathVariable @NotNull long productId){
         ResponseEntity<Integer> result = null;
 
         try {
