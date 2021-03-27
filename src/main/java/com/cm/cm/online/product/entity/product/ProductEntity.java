@@ -1,16 +1,12 @@
 package com.cm.cm.online.product.entity.product;
 
 import com.cm.cm.online.product.dto.product.ProductDTO;
-import com.cm.cm.online.product.entity.productSkuMain.ProductSkuMainEntity;
-import com.cm.cm.online.product.entity.productSkuSub.ProductSkuSubEntity;
+import com.cm.cm.online.product.entity.productSku.ProductSkuEntity;
 import lombok.*;
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 상품 table(entity)
@@ -30,20 +26,27 @@ public class ProductEntity {
     private String name;
     private int quantity;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "product")
-    private ProductSkuMainEntity skuMain;
 
 
+    @OneToMany
+    @JoinColumn(name = "productId", referencedColumnName = "id")
+    private List<ProductSkuEntity> skuList = new ArrayList<> (  );
 
-    // N + 1 문제 및 속도 성능 저하 해결을 위한 지연로딩, subselect, batch size 설정
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
-    @BatchSize ( size = 100)
-    @Fetch ( FetchMode.SUBSELECT )
-    private Set<ProductSkuSubEntity> skuSubList = new LinkedHashSet<>();
-
-
+//
+//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "product")
+//    private ProductSkuMainEntity skuMain;
+//
+//
+//
+//    // N + 1 문제 및 속도 성능 저하 해결을 위한 지연로딩, subselect, batch size 설정
+//    @OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
+//    @BatchSize ( size = 100)
+//    @Fetch ( FetchMode.SUBSELECT )
+//    private Set<ProductSkuSubEntity> skuSubList = new LinkedHashSet<>();
+//
+//
     public int getPrice(){
-        return this.skuMain.getPrice () + this.getSkuSubList ().stream ().mapToInt ( ProductSkuSubEntity::getPrice ).sum ();
+        return this.getSkuList ().stream ().mapToInt ( ProductSkuEntity::getPrice ).sum ();
     }
 
     public static ProductEntity newInstance(ProductDTO dto){
@@ -57,8 +60,4 @@ public class ProductEntity {
     public boolean saleable(){
         return this.getQuantity () > 0;
     }
-
-
-
-
 }
