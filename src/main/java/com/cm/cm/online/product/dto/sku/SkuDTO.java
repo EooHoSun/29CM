@@ -1,14 +1,14 @@
-package com.cm.cm.online.product.dto.skuMain;
+package com.cm.cm.online.product.dto.sku;
 
 import com.cm.cm.online.product.dto.origin.OriginDTO;
 import lombok.Data;
 
 @Data
-public class SkuMainDTO {
-    private String id;
+public class SkuDTO {
+    private long id;
     private int saleprice;
     private int purchaseprice;
     private String name;
-    private String originCd;
+    private String skuType;
     private OriginDTO origin;
 }
