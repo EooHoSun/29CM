@@ -1,8 +1,7 @@
 package com.cm.cm.online.product.entity.productSku;
 
-import com.cm.cm.online.product.entity.product.ProductEntity;
+import com.cm.cm.online.BaseEntity;
 import com.cm.cm.online.product.entity.sku.SkuEntity;
-import com.cm.cm.online.product.entity.sku.SkuSubEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name = "PRODUCTS_SKUS")
-public class ProductSkuEntity {
+public class ProductSkuEntity  extends BaseEntity {
 
     @EmbeddedId
     ProductSkuVO productSkuVO;

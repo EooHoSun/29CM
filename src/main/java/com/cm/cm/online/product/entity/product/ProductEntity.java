@@ -1,7 +1,11 @@
 package com.cm.cm.online.product.entity.product;
 
+import com.cm.cm.online.BaseEntity;
 import com.cm.cm.online.product.dto.product.ProductDTO;
 import com.cm.cm.online.product.entity.productSku.ProductSkuEntity;
+import com.cm.cm.online.product.entity.sku.SkuMainEntity;
+import com.cm.cm.online.product.entity.sku.SkuSubEntity;
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,7 +22,7 @@ import java.util.List;
 @Entity
 @Table(name = "PRODUCTS")
 @EqualsAndHashCode(of = "id")
-public class ProductEntity {
+public class ProductEntity  extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -32,24 +36,18 @@ public class ProductEntity {
     @JoinColumn(name = "productId", referencedColumnName = "id")
     private List<ProductSkuEntity> skuList = new ArrayList<> (  );
 
-//
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "product")
-//    private ProductSkuMainEntity skuMain;
-//
-//
-//
-//    // N + 1 문제 및 속도 성능 저하 해결을 위한 지연로딩, subselect, batch size 설정
-//    @OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
-//    @BatchSize ( size = 100)
-//    @Fetch ( FetchMode.SUBSELECT )
-//    private Set<ProductSkuSubEntity> skuSubList = new LinkedHashSet<>();
-//
-//
     public int getPrice(){
-        return this.getSkuList ().stream ().mapToInt ( ProductSkuEntity::getPrice ).sum ();
+        return this.getSkuMainPrice() + this.getSkuSubPrice ();
     }
 
-    public static ProductEntity newInstance(ProductDTO dto){
+    private int getSkuMainPrice(){
+        return this.getSkuList ().stream ().filter ( e -> e.getSku () instanceof SkuMainEntity ).mapToInt ( ProductSkuEntity::getPrice ).sum();
+    }
+    private int getSkuSubPrice(){
+        return this.getSkuList ().stream ().filter ( e -> e.getSku () instanceof SkuSubEntity ).mapToInt ( ProductSkuEntity::getPrice ).sum();
+    }
+
+    public static ProductEntity newInstance(@NotNull ProductDTO dto){
         return ProductEntity.builder ()
                 .contents ( dto.getContents () )
                 .name ( dto.getName () )

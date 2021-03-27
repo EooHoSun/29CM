@@ -1,5 +1,6 @@
 package com.cm.cm.online.product.entity.origin;
 
+import com.cm.cm.online.BaseEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ORIGIN")
 @EqualsAndHashCode(of = "cd")
-public class OriginEntity {
+public class OriginEntity extends BaseEntity {
     @Id
     private String cd;
     private String name;

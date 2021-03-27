@@ -1,5 +1,6 @@
 package com.cm.cm.online.product.entity.sku;
 
+import com.cm.cm.online.BaseEntity;
 import com.cm.cm.online.product.dto.sku.SkuDTO;
 import com.cm.cm.online.product.entity.origin.OriginEntity;
 import lombok.*;
@@ -17,7 +18,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "SKUS")
 @DiscriminatorColumn(name = "skutype")
-public class SkuEntity {
+public class SkuEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

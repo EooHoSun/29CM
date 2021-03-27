@@ -5,6 +5,7 @@ import com.cm.cm.online.product.entity.product.ProductEntity;
 import com.cm.cm.online.product.repository.ProductMapper;
 import com.cm.cm.online.product.repository.ProductRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @AllArgsConstructor
+@Slf4j
 public class ProductService {
 
     private final ProductRepository repository;
@@ -51,7 +53,7 @@ public class ProductService {
         return result;
     }
 
-    public ProductDTO findByProductId( String productId){
+    public ProductDTO findByProductId( long productId){
         ProductDTO result = null;
         ProductEntity entity = repository.findById ( productId ).get ();
 
@@ -63,12 +65,14 @@ public class ProductService {
     }
 
     //
-    public Integer getPriceByProductId(String productId){
+    public Integer getPriceByProductId(long productId){
         Integer result = -1;
+
         ProductEntity entity = repository
                 .findById ( productId )
                 .get ();
 
+        log.info ( "productEntity : " + entity);
         if(entity.saleable ()){
             result = Integer.valueOf (entity.getPrice ());
         }
